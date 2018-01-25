@@ -20,6 +20,7 @@ if _HAS_KERAS2_TF:
         _keras.layers.advanced_activations.PReLU: _layers2.convert_activation,
         _keras.layers.advanced_activations.ELU: _layers2.convert_activation,
         _keras.layers.advanced_activations.ThresholdedReLU: _layers2.convert_activation,
+        _keras.layers.advanced_activations.Softmax: _layers2.convert_activation,
 
         _keras.layers.convolutional.Conv2D: _layers2.convert_convolution,
         _keras.layers.convolutional.Conv2DTranspose: _layers2.convert_convolution,
@@ -84,7 +85,8 @@ def _is_activation_layer(layer):
             isinstance(layer, _keras.layers.advanced_activations.LeakyReLU) or \
             isinstance(layer, _keras.layers.advanced_activations.PReLU) or \
             isinstance(layer, _keras.layers.advanced_activations.ELU) or \
-            isinstance(layer, _keras.layers.advanced_activations.ThresholdedReLU))
+            isinstance(layer, _keras.layers.advanced_activations.ThresholdedReLU) or \
+            isinstance(layer, _keras.layers.advanced_activations.Softmax))
 
 def _check_unsupported_layers(model, add_custom_layers = False):
     # When add_custom_layers = True, we just convert all layers not present in

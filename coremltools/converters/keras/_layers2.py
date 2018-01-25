@@ -30,6 +30,8 @@ def _get_activation_name_from_keras_layer(keras_layer):
         non_linearity = 'ELU'
     elif isinstance(keras_layer, _keras.layers.advanced_activations.ThresholdedReLU):
         non_linearity = 'THRESHOLDEDRELU'
+    elif isinstance(keras_layer, _keras.layers.advanced_activations.Softmax):
+        non_linearity = 'SOFTMAX'
     else:
         import six
         if six.PY2:
